@@ -48,3 +48,48 @@ export default tseslint.config({
   },
 });
 ```
+
+### Storage
+In this project, React Context and Providers used to easily share data between components without passing props everywhere.
+
+Why this method was chosen:
+ - Keeps the code clean and simple.
+ - Helps avoid prop drilling.
+ - Makes the app easier to grow and maintain in the future.
+ - Avoid extra package like Mobx etc(just for now).
+ - Encapsulating logic.
+
+```js
+// Without provider. Duplicate state logic in multiple components
+const [selectedElements, setSelectedElements] = useState([]);
+
+// With provider:
+const SelectedElementsProvider = ({ children }) => {
+  const [selectedElements, setSelectedElements] = useState([]);
+  return (
+    <SelectedElementsContext.Provider value={{ selectedElements, setSelectedElements }}>
+      {children}
+    </SelectedElementsContext.Provider>
+  );
+};
+```
+
+Separation of concerns:
+Mixing state management logic with UI logic in components can make the code harder to read and maintain.
+```js
+// without provider
+const MyComponent = () => {
+  const [selectedElements, setSelectedElements] = useState([]);
+  // UI logic mixed with state management
+  return <div>{selectedElements.map((element) => <div key={element}>{element}</div>)}</div>;
+};
+
+// with provider
+const MyComponent = () => {
+  const { selectedElements } = useSelectedElements();
+  // Pure UI logic
+  return <div>{selectedElements.map((element) => <div key={element}>{element}</div>)}</div>;
+};
+```
+
+

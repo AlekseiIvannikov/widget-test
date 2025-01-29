@@ -8,7 +8,6 @@ export default defineConfig({
       entry: 'src/main.jsx',
       name: 'MyWidget',
       fileName: (format) => `my-widget.${format}.js`,
-      formats: ['umd'],
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
