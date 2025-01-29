@@ -1,0 +1,22 @@
+.badge {
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background-color: #121212;
+  color: #fff;
+}
+
+.badge__text {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+}
+
+.badge__remove:after {
+  display: inline-block;
+  font-size: 1rem;
+  content: '\00d7';
+  cursor: pointer;
+}

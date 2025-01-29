@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="dist/vite-project.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+  </head>
+  <body>
+    <div id="my-widget-container"></div>
+  </body>
+  <!-- Load React and ReactDOM, I guess some issues with swc react plugin,
+  so reactDom and react are not defined before widget load. Need to be fixed-->
+  <script src="https://unpkg.com/react@18.0.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"></script>
+  <script src="dist/my-widget.umd.js"></script>
+  <script>
+    window.onload = function() {
+      if (window.renderMyWidget) {
+        window.renderMyWidget('my-widget-container', { someProp: 'someValue' });
+      } else {
+        console.error('renderMyWidget is not available');
+      }
+    }
+  </script>
+</html>

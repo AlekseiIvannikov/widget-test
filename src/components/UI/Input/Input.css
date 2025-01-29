@@ -1,0 +1,14 @@
+.input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.input-wrapper__input {
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  max-width: 100%;
+  padding: 0.8rem;
+  font-size: 1.4rem;
+}

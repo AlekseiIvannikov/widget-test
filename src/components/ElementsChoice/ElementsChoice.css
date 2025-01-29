@@ -1,0 +1,12 @@
+.elements-choice {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.elements-choice__filters {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

@@ -1,0 +1,5 @@
+.virtual-list {
+  height: 40rem;
+  overflow-y: auto;
+  position: relative;
+}
