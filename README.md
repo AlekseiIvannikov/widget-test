@@ -1,53 +1,23 @@
-# React + TypeScript + Vite
+## My Widget Library
+This project is a widget library that allows you to easily embed a React-based widget into any web application. 
+The widget is designed to be lightweight, customizable, and easy to integrate.
+
+### Features
+Easy Integration: The widget can be added to any HTML page with just a few lines of code.
+
+Customizable: Pass props to the widget to customize its behavior and appearance.
+
+Dynamic Rendering: The widget can be dynamically rendered and unmounted using provided global functions.
+
+State Management: Uses React Context and Providers for efficient state management without relying on external libraries like MobX or Redux.
+
+### Tech Stack 
+
+#### React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
 
 ### Storage
 In this project, React Context and Providers used to easily share data between components without passing props everywhere.
@@ -92,4 +62,54 @@ const MyComponent = () => {
 };
 ```
 
+### How to Use
+Add the Widget Container:
+Add a div with a unique id to your HTML where you want the widget to appear.
+```html
+<body>
+  <div id="my-widget-container"></div>
+</body>
+```
+Include the Widget Script:
+Add the widget script to your HTML file.
+```html
+<script src="dist/my-widget.umd.js"></script>
+```
 
+Render the Widget:
+Use the renderMyWidget function to render the widget inside the container. You can pass custom props to the widget.
+```js
+<script>
+  window.onload = function () {
+    if (window.renderMyWidget) {
+      window.renderMyWidget('my-widget-container', { someProp: 'someValue' });
+    } else {
+      console.error('renderMyWidget is not available');
+    }
+  };
+</script>
+```
+
+Unmount the Widget:
+If needed, unmount the widget using the unmountMyWidget function.
+```js
+window.unmountMyWidget('my-widget-container');
+```
+
+### Development
+To build the widget locally:
+
+Clone the repository.
+
+Install dependencies:
+
+```bash
+npm install
+```
+Build the widget:
+
+```bash
+npm run build
+```
+npm run build
+Open the index.html file in your browser to see the widget in action.
